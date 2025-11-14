@@ -1,0 +1,16 @@
+<table>
+    <tr>
+        <td class= "menu">
+            <div *ngFor= "let h of allHeroes">
+                <button class= "btn" routerLink='hero/{{h.alias}}' > {{h.alias}} </button>
+            </div>
+            <hr>
+            <div>
+                <button class="btn" routerLink="new" > Create Hero </button>
+            </div>
+        </td>
+        <td>
+            <router-outlet (deactivate)="reload()"></router-outlet>
+        </td>
+    </tr>
+</table>

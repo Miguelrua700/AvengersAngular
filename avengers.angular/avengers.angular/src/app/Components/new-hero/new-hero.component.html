@@ -1,0 +1,52 @@
+<div>   
+    <label for="name">Hero Name: </label>
+    <input id="name" [(ngModel)]="name" placeholder="name"/>
+</div>
+<div>
+    <label for="weight">Weight: </label>
+    <input id="weight" [(ngModel)]="weight" placeholder="weight"/>
+</div>
+<div>
+    <label for="height">Height: </label>
+    <input id="height" [(ngModel)]="height" placeholder="height"/>
+</div>
+<div>
+    <label for="species">Hero Species: </label>
+    <select id="species" [(ngModel)]="species" placeholder="species"/>
+        <option *ngFor="let sp of ['Human', 'Alien', 'Mutant', 'Technological']" 
+            value="{{['Human', 'Alien', 'Mutant', 'Technological'].indexOf(sp)+1}}">
+            {{sp}}
+        </option>
+    </select>
+</div>
+<div>
+    <label for="origin">Hero Origin: </label>
+    <input id="origin" [(ngModel)]="origin" placeholder="origin"/>
+</div>
+<div>
+    <label for="strength">Hero strength: </label>
+    <select id="strength" [(ngModel)]="strength" placeholder="strength"/>
+        <option *ngFor="let v of ['Ant', 'Weak', 'Normal', 'Strong', 'God']" 
+            value="{{['Ant', 'Weak', 'Normal', 'Strong', 'God'].indexOf(st)+1}}">
+            {{v}}
+        </option>
+    </select>
+</div>
+<div>
+    <label for="city">Operating Location: </label>
+    <select id="city" [(ngModel)]="city" placeholder="city"/>
+        <option *ngFor="let c of allCities" 
+            value="{{c.cod}}">
+            {{c.name}}
+        </option>
+    </select>
+</div>
+<div>
+    <label for="photo">Photo: </label>
+    <input id="photo" [(ngModel)]="photo" placeholder="photo URL"/>
+    <img *ngIf="photo" [src]="{{photo}}" class="preview"/>
+</div>
+<p></p>
+<div>
+    <button class="btn" (click)="createHero()">CREATE</button>
+</div>

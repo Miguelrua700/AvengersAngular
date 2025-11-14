@@ -1,0 +1,15 @@
+<p>hero-detail works!</p>
+
+<table *ngIf="hero">
+  <tr><td colspan="3" class="heroname">{{hero.alias}}</td></tr>
+  <tr>
+    <td class="label">strength:</td>
+    <td class= "value">{{hero.strength}}</td>
+    <td rowspan="5"><img src='{{hero.photo}}' alt="{{hero.alias}}"/></td>
+</tr>
+  <tr><td class="label">weight: </td><td class="value">{{hero.weight}}</td></tr>
+  <tr><td class="label">height:</td><td class="value">{{hero.height}}</td></tr>
+  <tr><td class="label">city:</td><td class="value">{{hero.operatingLocation}}</td></tr>
+  <tr><td class="label">status:</td><td class="value">{{hero.currentStatus}}</td></tr>
+</table>
+
