@@ -12,9 +12,10 @@
 </div>
 <div>
     <label for="species">Hero Species: </label>
-    <select id="species" [(ngModel)]="species" placeholder="species"/>
+    <!-- CORREÇÃO: Removido o ' /' antes do '>' -->
+    <select id="species" [(ngModel)]="species" placeholder="species">
         <option *ngFor="let sp of ['Human', 'Alien', 'Mutant', 'Technological']" 
-            value="{{['Human', 'Alien', 'Mutant', 'Technological'].indexOf(sp)+1}}">
+            [value]="['Human', 'Alien', 'Mutant', 'Technological'].indexOf(sp)+1">
             {{sp}}
         </option>
     </select>
@@ -25,18 +26,21 @@
 </div>
 <div>
     <label for="strength">Hero strength: </label>
-    <select id="strength" [(ngModel)]="strength" placeholder="strength"/>
+    <!-- CORREÇÃO: Removido o ' /' antes do '>' -->
+    <select id="strength" [(ngModel)]="strength" placeholder="strength">
+        <!-- CORREÇÃO: A variável era 'v', não 'st'. E usei [value] em vez de value={{...}} -->
         <option *ngFor="let v of ['Ant', 'Weak', 'Normal', 'Strong', 'God']" 
-            value="{{['Ant', 'Weak', 'Normal', 'Strong', 'God'].indexOf(st)+1}}">
+            [value]="['Ant', 'Weak', 'Normal', 'Strong', 'God'].indexOf(v)+1">
             {{v}}
         </option>
     </select>
 </div>
 <div>
     <label for="city">Operating Location: </label>
-    <select id="city" [(ngModel)]="city" placeholder="city"/>
+    <!-- CORREÇÃO: Removido o ' /' antes do '>' -->
+    <select id="city" [(ngModel)]="city" placeholder="city">
         <option *ngFor="let c of allCities" 
-            value="{{c.cod}}">
+            [value]="c.cod">
             {{c.name}}
         </option>
     </select>
@@ -44,7 +48,8 @@
 <div>
     <label for="photo">Photo: </label>
     <input id="photo" [(ngModel)]="photo" placeholder="photo URL"/>
-    <img *ngIf="photo" [src]="{{photo}}" class="preview"/>
+    <!-- CORREÇÃO: A sintaxe para property binding é [src]="photo", sem as chavetas {{}} -->
+    <img *ngIf="photo" [src]="photo" class="preview"/>
 </div>
 <p></p>
 <div>

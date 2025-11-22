@@ -1,5 +1,6 @@
-import { NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+// CORREÇÃO: Importar o 'Location' e 'CommonModule'
+import { NgFor, NgIf, CommonModule, Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core'; // CORREÇÃO: Importar OnInit
 import { FormsModule } from '@angular/forms';
 import { HeroService } from '../../Services/hero.service';
 import { CityService } from '../../Services/city.service';
@@ -8,11 +9,13 @@ import { City } from '../../Models/city';
 @Component({
   selector: 'app-new-hero',
   standalone: true,
-  imports: [NgFor, NgIf, FormsModule],
+  // CORREÇÃO: Adicionar CommonModule aos imports
+  imports: [CommonModule, NgFor, NgIf, FormsModule],
   templateUrl: './new-hero.component.html',
   styleUrl: './new-hero.component.css'
 })
-export class NewHeroComponent {
+// CORREÇÃO: Implementar a interface OnInit
+export class NewHeroComponent implements OnInit {
   allCities: City[] | undefined;
 
   name: string = "";
@@ -27,7 +30,8 @@ export class NewHeroComponent {
   constructor(
     private _heroService: HeroService,
     private _cityService: CityService,
-    private location: Location) { }
+    private location: Location // Agora o 'Location' está importado
+  ) { }
 
   createHero(): void {
     let theNewHero = {
@@ -42,9 +46,11 @@ export class NewHeroComponent {
 
     this._heroService
       .createHero(theNewHero)
-      .subscribe( () => this.location.historyGo(-1) );
+      // CORREÇÃO: O método correto é 'back()', não 'historyGo()'
+      .subscribe( () => this.location.back() );
     }
 
+    // A função 'ngOnInit' deve estar aqui
     ngOnInit(): void {
     this._cityService
       .getAllCities()

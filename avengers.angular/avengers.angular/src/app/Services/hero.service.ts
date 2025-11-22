@@ -8,11 +8,10 @@ import { Hero } from '../Models/hero';
 })
 export class HeroService {
 
-  theServerURL = "https://localhost:7007/api/Heroes/"
+  theServerURL = "http://localhost:5250/api/Heroes/"
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   };
-
 
   constructor(private webApiClient: HttpClient) { }
 
